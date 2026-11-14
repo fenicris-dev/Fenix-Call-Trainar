@@ -1,0 +1,131 @@
+# Fênix Call Trainer v1.0 — Relatório de testes
+
+Data: 13/11/2026
+
+- Testes da lógica (Node): **55 de 55 ok** (voz, zonas, alertas, cliente virtual, avaliador, domínio, dados)
+- Testes funcionais no navegador (Chromium, 390 e 360 px, microfone simulado): **111 de 111 ok**
+- Erros de JavaScript no console durante a bateria: nenhum
+
+## Correções feitas durante os testes
+- A política de privacidade, linkada no primeiro acesso, abria o próprio onboarding e não podia ser lida antes do aceite: corrigido (agora abre normalmente).
+- Campo de mensagem da simulação cortava o texto de ajuda: corrigido.
+
+## Resultado de cada verificação
+
+- ✅ splash some depois de carregar
+- ✅ onboarding: nome obrigatório
+- ✅ onboarding: aceite obrigatório
+- ✅ política de privacidade abre antes do aceite (sem cair no onboarding)
+- ✅ onboarding conclui e mostra Início
+- ✅ avatar mostra iniciais
+- ✅ rodapé com ano, <Cristiano Fênix/>, © e versão
+- ✅ dados persistem após recarregar
+- ✅ diagnóstico exige todas as respostas
+- ✅ diagnóstico: nota 83 e módulo recomendado
+- ✅ trilha mostra 10 módulos
+- ✅ aula: validação e correção do exercício
+- ✅ sessão: avisa quando a fala está vazia
+- ✅ sair da simulação pergunta antes (Ficar mantém a tela)
+- ✅ pausar/retomar alternam o botão
+- ✅ reiniciar descarta a conversa
+- ✅ finalizar sem nenhuma fala não gera tentativa
+- ✅ conversa boa: cliente encerra e abre o relatório
+- ✅ conversa boa: nota >= 70, aprovada, sem falha crítica
+- ✅ relatório mostra selo Demonstração
+- ✅ relatório traz blocos, pontos fortes, prioridades e próximo exercício
+- ✅ relatório não menciona emoções inferidas
+- ✅ autopercepção salva e fica só no registro privado
+- ✅ PDF do relatório baixa e é um PDF válido
+- ✅ falha crítica: reprovada com nota abaixo do corte
+- ✅ falha crítica: aviso visível no relatório
+- ✅ tentativas do mesmo cenário numeradas (1, 2)
+- ✅ grosseria encerra a ligação e gera falha crítica
+- ✅ histórico: 3 tentativas, limite de 2 na comparação
+- ✅ comparação mostra antes/depois e variação
+- ✅ gráfico SVG de evolução renderiza
+- ✅ alternar período para mês funciona
+- ✅ excluir tentativa remove do histórico
+- ✅ trocar para instrutor mostra o painel
+- ✅ script: nome obrigatório
+- ✅ script: etapa obrigatória precisa de expressões
+- ✅ script novo salvo com etapas reordenadas, objeção, proibida e identidade
+- ✅ editar script sobe a versão e registra histórico
+- ✅ editor: sair com alterações pergunta (Ficar/Sair funcionam)
+- ✅ duplicar script
+- ✅ arquivar script
+- ✅ exportar script gera JSON válido
+- ✅ importar script cria novo script
+- ✅ importar JSON inválido mostra erro
+- ✅ script usado por cenário não pode ser excluído
+- ✅ excluir exige digitar APAGAR (botão libera só então)
+- ✅ cenário novo valida nome e salva com objeções e palavras-chave
+- ✅ cenário editar
+- ✅ operador vê scripts em somente leitura
+- ✅ teste: valida nome, tempo e corte; salva
+- ✅ aplicar teste exige nome e aceite do aviso
+- ✅ teste abre a etapa de conhecimento
+- ✅ conhecimento exige todas as respostas e segue para a simulação
+- ✅ teste: script oculto (sem consulta)
+- ✅ teste: tempo limite exibido
+- ✅ teste (texto): Espelho de voz não aparece sem microfone
+- ✅ teste conclui e agradece ao candidato
+- ✅ instrutor vê nota, conhecimento (67) e transcrição
+- ✅ instrutor NÃO vê voz, Espelho nem autopercepção
+- ✅ revisão valida nota fora de 0–100
+- ✅ revisão registra decisão humana e ajuste de nota (nota original mantida)
+- ✅ candidato não passa do limite de tentativas
+- ✅ exportação dos resultados não contém voz nem sentimento
+- ✅ editar teste
+- ✅ excluir teste com APAGAR (resultados permanecem)
+- ✅ voz: consentimento explica finalidade, não gravação e envio pelo navegador
+- ✅ voz: recusar o consentimento não liga o microfone
+- ✅ calibração: aguarda o ruído e libera a leitura
+- ✅ calibração curta demais é recusada
+- ✅ calibração salva a linha de base (wpm, dB, tom)
+- ✅ espelho: chave liga e lembra a escolha
+- ✅ ponto de atenção limitado a 1–3 hábitos
+- ✅ meta de zona ajustável
+- ✅ espelho ligado mostra 4 medidores
+- ✅ medidores de volume e tom reagem à voz
+- ✅ tom medido coerente com a voz simulada (130–170 Hz)
+- ✅ desligar o espelho esconde os medidores
+- ✅ religar o espelho volta os medidores
+- ✅ leitura: modo registrado e bloco Condução não pesa
+- ✅ relatório mostra "Sua voz" só para o operador, com a comparação com a base
+- ✅ métricas de voz guardadas no registro privado
+- ✅ bloco Voz avaliado por métricas de áudio (não por emoção)
+- ✅ espelho: % do tempo na zona calculado (privado)
+- ✅ gráfico da meta do Espelho aparece na evolução
+- ✅ modo voz: campo de texto continua funcionando como alternativa (STT presente)
+- ✅ modo voz: finaliza e avalia
+- ✅ teste do microfone informa o nível captado
+- ✅ apagar calibração
+- ✅ config: valida nota de corte e faixa; salva valores válidos
+- ✅ IA externa: exige HTTPS e informa falha de conexão
+- ✅ IA externa ativada guarda o endereço
+- ✅ com a IA fora do ar, o cliente virtual responde em modo Demonstração e avisa
+- ✅ avaliação cai para Demonstração com aviso
+- ✅ IA externa pode ser desativada
+- ✅ backup exportado é válido (app, versão, dados)
+- ✅ backup de outro app é recusado
+- ✅ arquivo que não é JSON é recusado
+- ✅ importar backup pede IMPORTAR e restaura os dados
+- ✅ revogar consentimento de voz
+- ✅ baixar meus dados
+- ✅ manual abre e baixa em Markdown
+- ✅ sobre mostra versão, selo v|c, changelog com datas e baixa
+- ✅ privacidade explica onde ficam os dados e o risco de perda
+- ✅ certificado só aparece com a trilha completa
+- ✅ trilha completa libera o certificado em PDF válido
+- ✅ nenhuma tela passa de 360 px de largura
+- ✅ botões, campos e abas têm altura >= 44 px
+- ✅ texto digitado não injeta HTML/JS
+- ✅ offline: indicador mostra Offline e o app continua navegando
+- ✅ excluir minha conta apaga tudo e volta ao primeiro acesso
+- ✅ nenhum erro de JavaScript no console durante todos os testes
+
+## Limites desta bateria (o que NÃO foi testado)
+- Reconhecimento de fala real (Web Speech API): o microfone foi simulado com um áudio sintético; a transcrição por voz depende do navegador e de internet e deve ser testada em Chrome/Edge no aparelho real.
+- Voz sintética do cliente (síntese de fala) e uso em iPhone/Safari.
+- IA externa real: só foi testada a falha de conexão e o retorno ao modo Demonstração.
+- Instalação como PWA e uso offline após fechar o navegador (o app é um arquivo único, sem service worker nesta versão).

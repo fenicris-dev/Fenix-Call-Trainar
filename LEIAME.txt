@@ -1,0 +1,22 @@
+FÊNIX CALL TRAINER v1.0 — 13/11/2026
+
+ARQUIVOS
+- fenix-call-trainer-v1.0.html ... o aplicativo (arquivo único, com versão no nome)
+- index.html ..................... a mesma cópia, neutra (sem versão no nome)
+- fenix-call-trainer-manual-v1.0.pdf / .md ... manual do usuário (passo a passo com prints)
+- prints/ ........................ imagens usadas no manual
+- fenix-call-trainer-relatorio-de-testes-v1.0.md ... resultado dos testes
+- fonte/ ......................... código-fonte (src), build.js e testes
+
+COMO USAR
+Abra o index.html no navegador (de preferência Chrome ou Edge) ou publique no GitHub Pages.
+Os dados ficam só no aparelho (localStorage). Faça backup em Configurações.
+
+COMO RECONSTRUIR
+cd fonte && npm i jspdf@2 --prefix vendor && node build.js
+(o build lê src/*.js e vendor/node_modules/jspdf; os testes e2e precisam do Playwright)
+
+PENDÊNCIAS CONHECIDAS
+- Ícone: provisório (a águia oficial não estava acessível no momento da construção). Trocar pelo base64 oficial.
+- Fênix Core / Firebase / login com Google: não integrados nesta versão (dados locais).
+- IA externa: opcional via função segura; sem ela o app usa o modo Demonstração.
