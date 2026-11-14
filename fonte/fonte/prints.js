@@ -1,0 +1,24 @@
+const { chromium } = require('/opt/npm-tools/node_modules/playwright');
+const path=require('path');
+const FALAS=['Boa tarde! Meu nome é Ana, da Empresa Modelo. Com quem eu falo?','Para sua segurança, pode confirmar seu nome completo e data de nascimento? Depois me conte o que aconteceu com a sua fatura.','Entendo, isso realmente incomoda. A fatura mostra a mensalidade e o proporcional do primeiro mês, vou explicar cada item do lançamento.','Ficou claro? Isso responde a sua dúvida? Posso registrar o ajuste e o próximo passo é a confirmação por e-mail em até dois dias.'];
+(async()=>{
+ const b=await chromium.launch({args:['--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream','--use-file-for-fake-audio-capture='+path.join(__dirname,'voz-falsa.wav')]});
+ const p=await b.newPage({viewport:{width:390,height:780},deviceScaleFactor:1.5}); const O='dist/prints/';
+ const shot=async n=>{await p.waitForTimeout(250);await p.screenshot({path:O+n+'.png'});};
+ const ir=async h=>{await p.evaluate(x=>{APP.sujo=false;if(location.hash===x)render();else location.hash=x;},h);await p.waitForTimeout(250);};
+ await p.goto('file:///home/claude/fct/dist/index.html'); await p.waitForSelector('#ob_nome'); await p.waitForTimeout(700);
+ await p.fill('#ob_nome','Ana'); await shot('01-primeiro-acesso');
+ await p.locator('label.sw:has(#ob_ok) .tr').click(); await p.locator('[data-act=obConcluir]').click(); await p.waitForSelector('text=Olá');
+ await ir('#/diagnostico'); await shot('02-diagnostico');
+ await ir('#/trilha'); await shot('03-trilha'); await ir('#/aula/m5'); await shot('04-aula');
+ await ir('#/treinar'); await shot('05-treinar');
+ await p.locator('input[name=cen][value=cn1]').check(); await p.locator('[data-act=iniciar]').click(); await p.waitForSelector('#entrada');
+ for(const f of FALAS){await p.fill('#entrada',f);await p.locator('[data-act=sessEnviar]').click();await p.waitForTimeout(250);} await shot('06-simulacao');
+ await p.fill('#entrada','Então ficou combinado. Posso ajudar em mais alguma coisa? Obrigada por ligar, tenha um ótimo dia!'); await p.locator('[data-act=sessEnviar]').click(); await p.waitForSelector('text=Relatório da simulação',{timeout:8000}); await shot('07-relatorio');
+ await p.evaluate(()=>window.scrollTo(0,900)); await shot('07b-relatorio-detalhe');
+ await ir('#/historico'); await shot('08-evolucao'); await ir('#/voz'); await shot('09-laboratorio-de-voz');
+ await ir('#/mais'); await shot('10-mais'); await ir('#/config'); await shot('11-configuracoes');
+ await p.locator('#btnav').click(); await p.locator('[data-act=trocarPerfil]').click(); await shot('12-painel-instrutor');
+ await ir('#/script/sc_vendas'); await shot('13-editor-de-script'); await ir('#/testes'); await shot('14-testes');
+ await b.close(); console.log('prints ok');
+})();
